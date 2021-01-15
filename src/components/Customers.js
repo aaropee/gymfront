@@ -10,6 +10,7 @@ import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
 
 import AddCustomer from './AddCustomer';
+import EditCustomer from './EditCustomer';
 
 function Customers() {
 
@@ -52,6 +53,19 @@ function Customers() {
         .catch(err => console.error(err))
     }
 
+    // Update customer
+    const updateCustomer = (link, customer) => {
+        fetch(link, {
+            method: 'PUT',
+            headers:{
+                'Content-type' : 'application/json'
+            },
+            body: JSON.stringify(customer)
+        })
+        .then(response => getCustomers())
+        .catch(err => console.error(err))
+    }
+
 
     // Delete Customer
     const deleteCustomer = (params) => {
@@ -77,6 +91,13 @@ function Customers() {
         {field: 'phone', sortable: true, filter: true},
         {
             headerName: '',
+            field: '_links.self.href',
+            width: 90,
+            cellRendererFramework: params =>
+            <EditCustomer updateCustomer={updateCustomer} params={params} />
+        },
+        {
+            headerName: '',
             field: 'links[1].self.href',
             width: 90,
             cellRendererFramework: params =>
@@ -89,7 +110,7 @@ function Customers() {
     return(
         <div>
             <AddCustomer addCustomer={addCustomer} />
-            <div className="ag-theme-alpine-dark" style={ { height: 800, width: '78%', margin: 'auto' } }>
+            <div className="ag-theme-alpine-dark" style={ { height: 803, width: '94%', margin: 'auto', paddingLeft: '100px'} }>
                 <AgGridReact
                     rowData={customers}
                     columnDefs={columns}

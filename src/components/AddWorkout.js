@@ -5,7 +5,6 @@ import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
 function AddWorkout(props) {
@@ -17,15 +16,15 @@ function AddWorkout(props) {
         activity: ''
     });
 
-    const handleClickOpen = () => { // Formin avaus
+    const handleClickOpen = () => {
         setOpen(true);
       };
     
-      const handleClose = () => {     // Formin sulkeminen
+      const handleClose = () => {
         setOpen(false);
       };
   
-      const handleSave = () => {  // tallennetaan uus treeni
+      const handleSave = () => {
           props.addWorkout(workout);
           handleClose();
       }
@@ -45,8 +44,8 @@ function AddWorkout(props) {
             <TextField
                 margin="dense"
                 label="Date"
-                name="date" // Olion attribuutin nimi
-                value={workout.date}   // Olio.attribuutti
+                name="date"
+                value={workout.date}
                 onChange={inputChanged}
                 fullWidth
             />
