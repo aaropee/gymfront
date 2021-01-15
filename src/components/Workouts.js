@@ -37,7 +37,7 @@ function Workouts() {
 
     return(
         <div>
-            <div className="ag-theme-alpine-dark" style={ { height: 800, width: '38%', margin: 'auto' } }>
+            <div className="ag-theme-alpine-dark" style={ { height: 800, width: '32%', margin: 'auto' } }>
                 <AgGridReact
                     rowData={workouts}
                     columnDefs={columns}

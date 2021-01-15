@@ -3,38 +3,43 @@ import './styles/App.css';
 import Customers from './components/Customers';
 import Workouts from './components/Workouts';
 import Home from './components/Home';
+import Sidebar from './components/Sidebar';
 // Material-UI
 import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import Paper from '@material-ui/core/Paper';
 import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
+import { makeStyles } from '@material-ui/core/styles';
 // Routing
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 
 function App() {
+
+const useStyles = makeStyles({
+  container: {
+    display: "flex"
+  }
+});
+
+const classes = useStyles();
+
   return (
+    
     <Router>
+      <Sidebar className={classes.container}/>
       <div className="App">
         <AppBar position="static" style={{ background: '#2f3030' }}>
-          <Typography variant="h6">
-            Aaron ryhti ja liike
+          <Typography variant="h4">
+            Ryhti & Liike
           </Typography>
           <Tabs variant="fullWidth">
-            <Tab label="Customers"/>
-            <Tab label="Workouts" />
           </Tabs>
         </AppBar>
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/customers" component={Customers} />
           <Route path="/workouts" component={Workouts} />
-        </Switch>
-
-        {/* <Customers /> */}
-        {/* <Workouts /> */}
+        </Switch> 
       </div>
     </Router>
 

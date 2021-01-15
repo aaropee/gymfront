@@ -7,7 +7,6 @@ import { AgGridReact } from 'ag-grid-react';
 
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
-import { Snackbar } from '@material-ui/core';
 
 function Customers() {
 
@@ -41,7 +40,7 @@ function Customers() {
 
     return(
         <div>
-            <div className="ag-theme-alpine-dark" style={ { height: 800, width: '90%', margin: 'auto' } }>
+            <div className="ag-theme-alpine-dark" style={ { height: 800, width: '73%', margin: 'auto' } }>
                 <AgGridReact
                     rowData={customers}
                     columnDefs={columns}
